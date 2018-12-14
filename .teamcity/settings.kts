@@ -37,6 +37,12 @@ object Build : BuildType({
         root(DslContext.settingsRoot)
     }
 
+    steps {
+        script {
+            scriptContent = "ls %teamcity.build.checkoutDir%"
+        }
+    }
+
     triggers {
         vcs {
         }
