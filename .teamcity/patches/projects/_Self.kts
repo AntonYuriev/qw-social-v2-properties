@@ -12,7 +12,7 @@ accordingly, and delete the patch script.
 changeProject(DslContext.projectId) {
     params {
         add {
-            password("acl", "credentialsJSON:2cd3a2c5-3271-4a00-bddf-58e5cffeb4a5", display = ParameterDisplay.HIDDEN)
+            password("consul.acl", "credentialsJSON:2cd3a2c5-3271-4a00-bddf-58e5cffeb4a5", display = ParameterDisplay.HIDDEN)
         }
     }
 }
