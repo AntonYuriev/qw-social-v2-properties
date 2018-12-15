@@ -12,6 +12,9 @@ project {
 
     params {
         add {
+            param("application.name", "qw-social-v2")
+        }
+        add {
             param("consul.host", "127.0.0.1:8500")
         }
         add {
@@ -23,8 +26,6 @@ project {
 object Build : BuildType({
     name = "Build"
 
-    val applicationName = "qw-social-v2"
-
     vcs {
         root(DslContext.settingsRoot)
     }
@@ -35,8 +36,8 @@ object Build : BuildType({
                 curl \
                     -H "X-Consul-Token: %consul.acl%" \
                     --request PUT \
-                    --data "@%teamcity.build.checkoutDir%/resources/$applicationName-dev.yml" \
-                    http://%consul.host%/v1/kv/config/applications/qw/$applicationName-dev.yml
+                    --data "@%teamcity.build.checkoutDir%/resources/%application.name%-dev.yml" \
+                    http://%consul.host%/v1/kv/config/applications/qw/%application.name%-dev.yml
             """
         }
 
@@ -45,8 +46,8 @@ object Build : BuildType({
                 curl \
                     -H "X-Consul-Token: %consul.acl%" \
                     --request PUT \
-                    --data "@%teamcity.build.checkoutDir%/resources/$applicationName-testing.yml" \
-                    http://%consul.host%/v1/kv/config/applications/qw/$applicationName-testing.yml
+                    --data "@%teamcity.build.checkoutDir%/resources/%application.name%-testing.yml" \
+                    http://%consul.host%/v1/kv/config/applications/qw/%application.name%-testing.yml
             """
         }
 
@@ -55,8 +56,8 @@ object Build : BuildType({
                 curl \
                     -H "X-Consul-Token: %consul.acl%" \
                     --request PUT \
-                    --data "@%teamcity.build.checkoutDir%/resources/$applicationName-stage.yml" \
-                    http://%consul.host%/v1/kv/config/applications/qw/$applicationName-stage.yml
+                    --data "@%teamcity.build.checkoutDir%/resources/%application.name%-stage.yml" \
+                    http://%consul.host%/v1/kv/config/applications/qw/%application.name%-stage.yml
             """
         }
     }
