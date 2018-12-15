@@ -4,8 +4,6 @@ import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.script
 
 version = "2018.2"
 
-val applicationName = "qw-social-v2"
-
 project {
 
     buildType(Build)
@@ -13,6 +11,8 @@ project {
 
 object Build : BuildType({
     name = "Build"
+
+    val applicationName = "qw-social-v2"
 
     vcs {
         root(DslContext.settingsRoot)
