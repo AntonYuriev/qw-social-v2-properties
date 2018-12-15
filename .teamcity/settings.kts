@@ -17,6 +17,8 @@ project {
         add {
             param("consul.host", "127.0.0.1:8500")
         }
+
+        // Здесь указывается не acl токен консула, а токен teamcity, который он заменяет на acl токен во время сборки
         add {
             password("consul.acl", "credentialsJSON:2cd3a2c5-3271-4a00-bddf-58e5cffeb4a5", display = ParameterDisplay.HIDDEN)
         }
